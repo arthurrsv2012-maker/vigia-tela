@@ -10,7 +10,7 @@ jobs:
       - name: Extrair projeto
         run: |
           mkdir proj
-          unzip -q *.zip -d proj
+          for z in *.zip; do unzip -o -q "$z" -d proj; done
           DIR=$(dirname "$(find proj -name settings.gradle.kts | head -1)")
           echo "PROJ_DIR=$DIR" >> $GITHUB_ENV
       - uses: actions/setup-java@v4
